@@ -2,10 +2,6 @@ variable "application" {
   type = string
 }
 
-variable "dns_name" {
-  type = string
-}
-
 variable "rds_instance_type" {}
 variable "latest_snapshot_id" {}
 variable "env" {}

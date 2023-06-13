@@ -3,15 +3,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-terraform {
-  backend "s3" {
-    bucket         = "ed-eos-terraform-state"
-    key            = "3tier/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "eos_table"
-  }
-}
-
 data "aws_secretsmanager_secret" "rds" {
   name = "ed-rds-01"
 }
@@ -39,7 +30,6 @@ module "web" {
   source              = "./modules/webserver"
   instance_type = var.instance_type
   instance_profile = var.instance_profile
-  dns_name = var.dns_name
   keypair = var.keypair
   asg_min_cap = var.asg_min_cap
   asg_max_cap = var.asg_max_cap
@@ -50,7 +40,6 @@ module "app" {
   source              = "./modules/app"
   instance_type = var.instance_type
   instance_profile = var.instance_profile
-  dns_name = var.dns_name
   keypair = var.keypair
   asg_min_cap = var.asg_min_cap
   asg_max_cap = var.asg_max_cap

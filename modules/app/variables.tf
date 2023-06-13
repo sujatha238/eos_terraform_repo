@@ -8,7 +8,7 @@ variable "keypair" {
 }
 
 variable "dns_name" {
-  type    = string
+  default    = "app"
 }
 
 variable "enable_monitor" {
