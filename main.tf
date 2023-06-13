@@ -3,6 +3,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
+terraform {
+  backend "s3" {}
+}
+
 data "aws_secretsmanager_secret" "rds" {
   name = "ed-rds-01"
 }
