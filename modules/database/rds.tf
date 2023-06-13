@@ -68,7 +68,7 @@ resource "aws_db_instance" "mysql" {
   multi_az                   = "${var.multi_availability_zone}"
   port                       = "${var.database_port}"
   vpc_security_group_ids     = ["${aws_security_group.mysql.id}"]
-  db_subnet_group_name       = "${aws_db_subnet_group.db.arn}"
+  db_subnet_group_name       = "${aws_db_subnet_group.db.name}"
   parameter_group_name       = "${var.parameter_group}"
   storage_encrypted          = "${var.storage_encrypted}"
   monitoring_interval        = "${var.monitoring_interval}"
