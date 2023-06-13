@@ -31,7 +31,7 @@ data "template_cloudinit_config" "init" {
 
 
 resource "aws_launch_configuration" "dpt_lc" {
-  name_prefix   = "${var.application}-lc-"
+  name_prefix   = "${var.application}-web-lc-"
   image_id             = data.aws_ami.dpt_ami.id
   key_name     = var.keypair
   security_groups      = [aws_security_group.dpt_sg.id]
@@ -53,7 +53,7 @@ resource "aws_launch_configuration" "dpt_lc" {
 }
 
 resource "aws_autoscaling_group" "dpt_asg" {
-  name                      = "${var.application}-dpt-asg"
+  name                      = "${var.application}-web-asg"
   max_size                  = var.asg_max_cap
   min_size                  = var.asg_min_cap
   desired_capacity          = var.asg_desired_cap
@@ -186,7 +186,7 @@ resource "aws_security_group" "elb" {
 
 
 resource "aws_lb" "dpt" {
-  name               = "${var.application}-dpt"
+  name               = "${var.application}-web-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.elb.id}"]
@@ -210,7 +210,7 @@ resource "aws_lb_listener" "web_tg1" {
 
 
 resource "aws_lb_target_group" "webtg1" {
-  name     = "${var.application}-tg1"
+  name     = "${var.application}-web-tg1"
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
