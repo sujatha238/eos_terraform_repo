@@ -222,7 +222,6 @@ health_check {
                 unhealthy_threshold = 2
                 interval = 5
                 timeout = 4
-                matcher = "200-308"
         }
 }
 
