@@ -216,9 +216,8 @@ resource "aws_lb_target_group" "webtg1" {
   vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
 
 health_check {
-                path = "/index.html"
                 port = "80"
-                protocol = "HTTP"
+                protocol = "TCP"
                 healthy_threshold = 2
                 unhealthy_threshold = 2
                 interval = 5

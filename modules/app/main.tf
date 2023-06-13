@@ -127,8 +127,8 @@ resource "aws_security_group" "dpt_sg" {
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -169,8 +169,8 @@ resource "aws_security_group" "elb" {
 
   # HTTP access from anywhere
    ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   } 
@@ -200,7 +200,7 @@ resource "aws_lb" "dpt" {
 
 resource "aws_lb_listener" "web_tg1" {
   load_balancer_arn = "${aws_lb.dpt.arn}"
-  port              = "80"
+  port              = "8080"
   protocol          = "HTTP"
   
   default_action {
@@ -212,14 +212,13 @@ resource "aws_lb_listener" "web_tg1" {
 
 resource "aws_lb_target_group" "webtg1" {
   name     = "${var.application}-tg1"
-  port     = 80
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
 
 health_check {
-                path = "/index.html"
-                port = "80"
-                protocol = "HTTP"
+                port = "8080"
+                protocol = "TCP"
                 healthy_threshold = 2
                 unhealthy_threshold = 2
                 interval = 5
