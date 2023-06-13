@@ -24,7 +24,7 @@ data "template_cloudinit_config" "init" {
 
   part {
     content_type = "text/x-shellscript"
-    content      = "${file("modules/webserver/scripts/installhttpd.sh")}"
+    content      = "${file("modules/webserver/scripts/setup.sh")}"
  }
 
 }
