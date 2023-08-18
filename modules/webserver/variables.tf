@@ -7,9 +7,9 @@ variable "keypair" {
   type    = string
 }
 
-variable "dns_name" {
+/*variable "dns_name" {
   default    = "www"
-}
+}*/
 
 variable "enable_monitor" {
   type    = string
@@ -21,10 +21,10 @@ variable "enable_ebs_optimization" {
   default = "false"
 }
 
-variable "notifications_arn" {
+/*variable "notifications_arn" {
   type = string
   default = "arn:aws:sns:us-east-1:576341600583:ed-web-alerts"
-}
+}*/
 
 variable "instance_type" {
   type = string

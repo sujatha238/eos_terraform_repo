@@ -1,10 +1,10 @@
 data "aws_ami" "dpt_ami" {
   most_recent = true
-  owners      = ["576341600583"]
+  owners      = ["272272548388"]
 
   filter {
     name   = "name"
-    values = ["eos-web-*"]
+    values = ["eos-web-image"]
   }
 }
 

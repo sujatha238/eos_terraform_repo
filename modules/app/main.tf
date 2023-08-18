@@ -1,12 +1,12 @@
 
 data "aws_ami" "dpt_ami" {
   most_recent = true
-  owners      = ["576341600583"]
+  owners      = ["272272548388"]
 
   filter {
     name   = "name"
-    values = ["eos-app-*"]
-  }
+    values = ["eos-app-image"]
+
 }
 
 data "terraform_remote_state" "vpc" {
@@ -228,7 +228,7 @@ health_check {
 }
 
 
-resource "aws_route53_record" "dpt" {
+/*resource "aws_route53_record" "dpt" {
   zone_id = "Z10474391LEWAIHPE933Q"
   name    = "${var.dns_name}"
   type    = "A"
@@ -238,6 +238,6 @@ resource "aws_route53_record" "dpt" {
     zone_id                = "${aws_lb.dpt.zone_id}"
     evaluate_target_health = true
   }
-}
+}*/
 
 

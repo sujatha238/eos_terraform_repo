@@ -30,7 +30,7 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-module "web" {
+/*module "web" {
   source              = "./modules/webserver"
   instance_type = var.instance_type
   instance_profile = var.instance_profile
@@ -38,7 +38,7 @@ module "web" {
   asg_min_cap = var.asg_min_cap
   asg_max_cap = var.asg_max_cap
   asg_desired_cap = var.asg_desired_cap   
-}
+}*/
 
 module "app" {
   source              = "./modules/app"

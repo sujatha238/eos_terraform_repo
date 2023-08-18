@@ -35,7 +35,7 @@ resource "aws_security_group" "mysql" {
 }
 
 
-data "aws_sns_topic" "sns" {
+data "aws_sns_topic" "eostsns" {
 name = "ed-web-alerts"
 }
 
